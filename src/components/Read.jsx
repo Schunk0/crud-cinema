@@ -27,7 +27,6 @@ function Read() {
                 <div className='mb-3'>
                     <strong>Ano: {data.ano}</strong>
                 </div>
-                <Link to={`/update/${id}`} className='btn btn-success'>Editar</Link>
                 <Link to="/" className='btn btn-primary ms-3'>Voltar</Link>
             </div>
         </div>

@@ -15,8 +15,6 @@ function Create() {
         event.preventDefault();
         axios.post('https://6adbb7ab3b7e90b82090282a.mockapi.io/Filmes', values)
             .then(res => {
-                //provavelmente remover o console.log
-                console.log(res);
                 navigate('/');
             })
             .catch(err => console.log(err));

@@ -66,10 +66,8 @@ function Home() {
                             {
                                 data.map((d, i) => (
                                     <tr key={i}>
-                                        <td>{d.id}</td>
-                                        <Link to={`/read/${d.id}`}>
-                                            <td>{d.nome}</td>
-                                        </Link>
+                                        <td>{d.id}</td>       
+                                            <td> <Link to={`/read/${d.id}`}>{d.nome}</Link></td>
                                     </tr>
                                 ))
                             }
