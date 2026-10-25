@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+
 function Home() {
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -12,62 +13,71 @@ function Home() {
     // Função para apagar um registro:
     const handleDelete = (id) => {
 
-        const confirm = window.confirm("Quer mesmo apagar este usuário?");
+        const confirm = window.confirm("Quer mesmo apagar este filme?");
         if (confirm) {
 
             axios.delete(`https://6adbb7ab3b7e90b82090282a.mockapi.io/Filmes/${id}`)
                 .then(() => {
 
-                    setData(prevData => prevData.filter(user => user.id !== id));
+                    setData(prevData => prevData.filter(filme => filme.id !== id));
                 })
                 .catch(err => console.log(err));
         }
     }
 
     return (
-        <div className='d-flex flex-column justify-content-center
-align-items-center bg-light vh-100'>
-            <h1>Lista de Filmes</h1>
-            <div className='w-75 rounded bg-white border shadow p-4'>
+        <div>
+            <div className="container mt-4">
+                <header className="border border-dark-subtle shadow-sm py-4 bg-white text-center">
 
-                <div className='d-flex justify-content-end'>
-                    <Link to="/create" className='btn btn-success'>NOVO</Link>
+                    <h1 className="fw-bold mb-4 text-uppercase" style={{ letterSpacing: '1px' }}>
+                        Catálogo de Filmes
+                    </h1>
+
+                    <nav className="nav justify-content-center">
+                        <Link to='/' className="nav-link text-dark px-4 fs-5">
+                            INÍCIO
+                        </Link>
+                        <Link to='/create' className="nav-link text-dark px-4 fs-5">
+                            CRIAR
+                        </Link>
+                        <Link to='/update' className="nav-link text-dark px-4 fs-5">
+                            ALTERAR
+                        </Link>
+                        <Link to='/delete' className="nav-link text-dark px-4 fs-5">
+                            APAGAR
+                        </Link>
+                    </nav>
+
+                </header>
+            </div>
+            <div className='d-flex flex-column justify-content-center align-items-center bg-light vh-100'>
+
+                <div className='w-75 rounded bg-white border shadow p-4'>
+
+                    <table className='table table-striped'>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                data.map((d, i) => (
+                                    <tr key={i}>
+                                        <td>{d.id}</td>
+                                        <Link to={`/read/${d.id}`}>
+                                            <td>{d.nome}</td>
+                                        </Link>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
                 </div>
-
-                <table className='table table-striped'>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Genero</th>
-                            <th>Ano</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data.map((d, i) => (
-                                <tr key={i}>
-                                    <td>{d.id}</td>
-                                    <td>{d.nome}</td>
-                                    <td>{d.genero}</td>
-                                    <td>{d.ano}</td>
-                                    <td>
-                                        <Link to={`/read/${d.id}`} className='btn btn-sm btn-info me-2'>Ler</Link>
-                                        <Link to={`/update/${d.id}`} className='btn btn-sm btn-primary me-2'>Editar</Link>
-                                        <button onClick={e => handleDelete(d.id)} className='btn btn-sm btn-danger'>Apagar</button>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
             </div>
         </div>
     )
-
-
-
-
-
 }
 export default Home

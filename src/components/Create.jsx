@@ -2,18 +2,20 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 function Create() {
+
     const [values, setValues] = useState({
-        nome: ''
-        ,
-        genero: ''
-        ,
+        nome: '',
+        genero: '',
         ano: ''
     });
+
     const navigate = useNavigate();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post('https://6adbb7ab3b7e90b82090282a.mockapi.io/Filmes', values)
             .then(res => {
+                //provavelmente remover o console.log
                 console.log(res);
                 navigate('/');
             })
@@ -23,7 +25,9 @@ function Create() {
     return (
         <div className='d-flex w-100 vh-100 justify-content-center align-items-center bg-light'>
             <div className='w-50 border bg-white shadow px-5 pt-3 pb-5 rouded'>
+
                 <h1>Adicionar Filme</h1>
+                
                 <form onSubmit={handleSubmit}>
                     <div className='mb-2'>
                         <label htmlFor="nome">Nome:</label>
