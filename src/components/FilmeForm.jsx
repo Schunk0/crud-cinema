@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 function FilmeForm({ values, setValues, onSubmit, textoBotao }) {
     return (
         <form onSubmit={onSubmit}>
-            <div className='mb-2'>
-                <label htmlFor="nome">Nome:</label>
+            <div className='mb-3'>
+                <label htmlFor="nome">Nome do Filme:</label>
                 <input type="text" name='nome' className='form-control'
                     placeholder='Digite o nome'
                     value={values.nome}
@@ -13,7 +13,7 @@ function FilmeForm({ values, setValues, onSubmit, textoBotao }) {
                     required
                 />
             </div>
-            <div className='mb-2'>
+            <div className='mb-3'>
                 <label htmlFor="genero">Gênero:</label>
                 <input type="text" name='genero' className='form-control'
                     placeholder='Digite o gênero'
@@ -22,8 +22,8 @@ function FilmeForm({ values, setValues, onSubmit, textoBotao }) {
                     required
                 />
             </div>
-            <div className='mb-3'>
-                <label htmlFor="ano">Ano:</label>
+            <div className='mb-4'>
+                <label htmlFor="ano">Ano de Lançamento:</label>
                 <input type="text" name='ano' className='form-control'
                     placeholder='Digite o ano'
                     value={values.ano}
@@ -31,8 +31,8 @@ function FilmeForm({ values, setValues, onSubmit, textoBotao }) {
                     required
                 />
             </div>
-            <button className='btn btn-success'>{textoBotao}</button>
-            <Link to="/" className='btn btn-primary ms-3'>Cancelar</Link>
+            <button className='btn btn-success px-4'>{textoBotao}</button>
+            <Link to="/" className='btn btn-outline-secondary ms-3 px-4'>Cancelar</Link>
         </form>
     );
 }

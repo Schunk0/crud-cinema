@@ -3,19 +3,28 @@ import { Link } from 'react-router-dom';
 
 function Cabecalho() {
     return (
-        <div className="container mt-4 mb-4">
-            <header className="border border-dark-subtle shadow-sm py-4 bg-white text-center rounded">
-                <h1 className="fw-bold mb-4 text-uppercase" style={{ letterSpacing: '1px' }}>
-                    Catálogo de Filmes
-                </h1>
-                <nav className="nav justify-content-center">
-                    <Link to='/' className="nav-link text-dark px-4 fs-5">INÍCIO</Link>
-                    <Link to='/create' className="nav-link text-dark px-4 fs-5">CRIAR</Link>
-                    <Link to='/update' className="nav-link text-dark px-4 fs-5">ALTERAR</Link>
-                    <Link to='/delete' className="nav-link text-dark px-4 fs-5">APAGAR</Link>
-                </nav>
-            </header>
-        </div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-5">
+            <div className="container">
+                <Link className="navbar-brand fw-bold text-uppercase" to="/" style={{ letterSpacing: '1px' }}>Catálogo de Filmes</Link>
+                
+                <div className="collapse navbar-collapse justify-content-end">
+                    <ul className="navbar-nav gap-3">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Início</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/create">Adicionar Filme</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/update">Alterar</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-danger" to="/delete">Apagar</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     );
 }
 
