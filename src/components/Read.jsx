@@ -4,20 +4,19 @@ import { Link, useParams } from 'react-router-dom';
 
 function Read() {
 
-    const [data, setData] = useState([]);
     const { id } = useParams();
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get('https://6adbb7ab3b7e90b82090282a.mockapi.io/Filmes/' + id)
             .then(res => setData(res.data))
             .catch(err => console.log(err));
     }, []);
+
     return (
         <div className='d-flex w-100 vh-100 justify-content-center align-items-center bg-light'>
             <div className='w-50 border bg-white shadow px-5 pt-3 pb-5 rouded'>
-
-                <h3>Detalhes do Filme</h3>
-                
+                <h3>Detalhes do Filme: {data.id}</h3>
                 <div className='mb-2'>
                     <strong>Nome: {data.nome}</strong>
                 </div>
@@ -32,4 +31,5 @@ function Read() {
         </div>
     )
 }
+
 export default Read;
